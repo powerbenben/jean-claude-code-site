@@ -26,46 +26,72 @@ export type Badge = {
 
 export const site = {
   hero: {
-    prompt: "jcc@rubee:~$",
+    prompt: "~/claude-enterprise$",
     titleLine1: "JEAN-CLAUDE",
     titleLine2: "CODE",
     subtitle:
-      "Le dirigeant de PME français qui a poussé Claude Code plus loin que 99% des devs. Praticien, pas influenceur.",
+      "Dirigeant de PME, j'ai implémenté l'IA au cœur de mon entreprise. Je vous aide à l'ancrer dans la vôtre.",
     ctaPrimary: { label: "Discutons", href: "#cta" },
     ctaSecondary: { label: "Voir l'offre", href: "#modules" },
   },
 
   realisations: {
-    label: "// ce que j'ai construit",
-    title: ["J'ai d'abord fait,", "chez moi."],
-    rubee: {
-      badge: "CHEZ RUBEE",
-      subtitle: "Les use cases en production",
+    label: "// cas d'usages",
+    title: ["Testé et validé dans une vraie entreprise."],
+    agentic: {
+      badge: "SYSTÈMES AGENTIQUES",
+      subtitle: "Les agents qui tournent au quotidien chez Rubee",
       cards: [
         {
-          title: "Google Ads",
+          title: "Gestionnaire Google Ads",
           tag: "multi-marques",
-          body: "Pilotage quotidien des campagnes Shopping, Search et PMax sur trois marques. Ajustement bids, mots-clés négatifs, allocation budgétaire, suivi TROAS par catégorie.",
+          body: "Un agent pilote les campagnes Shopping, Search et PMax sur trois marques. Bids, négatifs, allocation budgétaire, suivi TROAS par catégorie. Optimisation continue, validation humaine sur les changements critiques.",
         },
         {
-          title: "Amazon Ads",
+          title: "Gestionnaire Amazon Ads",
           tag: "FR + DE",
-          body: "Optimisation des campagnes Sponsored Products et Sponsored Brands sur les marketplaces Amazon FR et DE. Pilotage du ROAS et de la part de voix organique.",
+          body: "Agent dédié aux Sponsored Products et Sponsored Brands sur Amazon FR et DE. Pilote ROAS, part de voix organique, exclusions et harvesting des mots-clés gagnants.",
         },
         {
-          title: "Achats fournisseurs",
-          tag: "Asie",
-          body: "Gestion du réassort fournisseurs Asie : analyse du besoin par SKU, optimisation du remplissage des conteneurs 40' et 40' High Cube, suivi paiements et arrivées port.",
+          title: "Gestionnaire de factures",
+          tag: "import auto",
+          body: "Un agent récupère les factures fournisseurs reçues par email, depuis Amazon Seller Central et Amazon Ads. Extraction, imputation comptable, rapprochement bancaire — prêt pour validation.",
         },
         {
-          title: "Brumeaux.fr",
-          tag: "e-commerce",
-          body: "Maintenance et évolution du site e-commerce Brumeaux (matériel de plein air) : fiches produits, traductions, optimisation de conversion, restrictions logistiques par produit.",
+          title: "Prospection B2B",
+          tag: "outbound",
+          body: "Pipeline complet : extraction de leads B2B qualifiés, génération d'emails personnalisés, envoi séquencé et suivi des réponses. Chaque étape tracée, jamais à l'aveugle.",
+        },
+        {
+          title: "Agents de production",
+          tag: "supply chain",
+          body: "Chaîne d'agents qui suit chaque commande fournisseur de la production en Asie jusqu'à la réception en entrepôt : étapes production, transport maritime, déclarations douanières, contrôles à l'arrivée.",
+        },
+        {
+          title: "Codir",
+          tag: "hebdo",
+          body: "Comité de direction hebdomadaire animé par un agent : analyse des KPI consolidés, identification des points d'attention, génération de l'ordre du jour, compte-rendu final.",
         },
       ] satisfies RealisationCard[],
     },
-    side: {
-      badge: "SIDE PROJECTS",
+    sites: {
+      badge: "SITES PILOTÉS PAR IA",
+      subtitle: "Conçus, codés et maintenus sous Claude Code",
+      cards: [
+        {
+          title: "Brumeaux.fr",
+          tag: "Claude Code",
+          body: "Le site e-commerce Brumeaux (matériel de plein air) tourne sous Claude Code : modifications, fiches produits, traductions, règles logistiques. Sans prestataire externe.",
+        },
+        {
+          title: "jeanclaudecode.fr",
+          tag: "Claude Code",
+          body: "Le site que vous lisez. Pixel-art, code Next.js, déploiement Vercel — tout sous Claude Code, de l'idée au nom de domaine.",
+        },
+      ] satisfies RealisationCard[],
+    },
+    sideProjects: {
+      badge: "PROJETS ANNEXES",
       subtitle: "Ce que je construis à côté",
       cards: [
         {
@@ -118,17 +144,17 @@ export const site = {
 
   about: {
     label: "// qui",
-    title: ["Benjamin Hamon,", "dirigeant praticien."],
-    photoPath: null as string | null, // remplacer par "/photo-benjamin.jpg" quand dispo
+    title: ["Benjamin Hamon,", "concepteur de système IA."],
+    photoPath: "/photo-benjamin.jpg" as string | null,
     photoFallback: "👨‍💻",
     paragraphs: [
-      "Dirigeant de Rubee, PME e-commerce. J'ai construit un système complet d'agents Claude Code pour faire tourner ma boîte : récap quotidien, optimisation des pubs, tri mail, agents métier.",
-      "Pas un dev qui fait des tutos. Pas un influenceur IA. Un entrepreneur qui a fait pour de vrai, et qui transmet la méthode aux PME qui veulent passer de l'IA-gadget à l'IA-systémique.",
+      "Je dirige Rubee, PME e-commerce de 5 personnes opérant 3 sites et 5 marketplaces européennes. Depuis fin 2025, je câble Claude Code dans chaque process de ma boîte — pas un pilote isolé, une saturation complète.",
+      "Ma méthode est terrain. Ce que je propose aux dirigeants de PME, je l'ai d'abord testé en production chez moi — avec ses ratés, ses ajustements, ses garde-fous. Pas un POC, pas un tuto : une boîte qui tourne.",
     ],
     badges: [
-      { label: "CLAUDE PARTNER NETWORK", variant: "claude" },
+      { label: "FONDATEUR JCC", variant: "claude" },
       { label: "DIRIGEANT RUBEE", variant: "marin" },
-      { label: "PRATICIEN PME", variant: "violet" },
+      { label: "27 AGENTS IA EN PROD", variant: "violet" },
     ] satisfies Badge[],
   },
 
