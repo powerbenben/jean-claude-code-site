@@ -309,13 +309,16 @@ a {
   font-size: 26px;
   line-height: 1.1;
 }
+/* Mobile : les personnages d'abord, recadrés sur la moitié droite de l'image (les cinq héros et le
+   beffroi) ; la hauteur est bornée pour qu'une tablette en portrait ne voie pas qu'un carré géant. */
 .hero-image {
   position: relative;
-  aspect-ratio: 3 / 2;
+  order: -1;
+  height: min(100vw, 75svh);
 }
 .hero-img {
   object-fit: cover;
-  object-position: 50% 40%;
+  object-position: 100% 50%;
 }
 @media (min-width: 900px) {
   /* L'image passe en fond, à bord perdu ; le titre tient dans le ciel, à gauche des personnages. */
@@ -327,7 +330,11 @@ a {
   .hero-image {
     position: absolute;
     inset: 0;
-    aspect-ratio: auto;
+    order: 0;
+    height: auto;
+  }
+  .hero-img {
+    object-position: 50% 40%;
   }
   .hero-contenu {
     flex: 1;
