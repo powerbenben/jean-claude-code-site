@@ -1,63 +1,49 @@
 import type { Metadata } from "next";
-import { Press_Start_2P, Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { site } from "@/content/site";
 import "./globals.css";
 
-const pressStart = Press_Start_2P({
-  variable: "--font-press-start",
-  subsets: ["latin"],
+/* Les trois polices de la charte v10, servies par le site (sous-ensemble latin). */
+const affiche = localFont({
+  src: "./fonts/lilita-one-400.woff2",
+  variable: "--font-affiche",
   weight: "400",
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+const texte = localFont({
+  src: "./fonts/jost-variable.woff2",
+  variable: "--font-texte",
+  weight: "400 700",
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const machine = localFont({
+  src: [
+    { path: "./fonts/courier-prime-400.woff2", weight: "400" },
+    { path: "./fonts/courier-prime-700.woff2", weight: "700" },
+  ],
+  variable: "--font-machine",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jeanclaudecode.fr"),
-  title: "Jean-Claude CODE — Claude Code en entreprise",
-  description:
-    "Le dirigeant de PME français qui a poussé Claude Code plus loin que 99% des devs. Praticien, pas influenceur. Trois modules IA pour PME : Wiki d'entreprise, Assistant Direction, Studio d'agents métier.",
+  metadataBase: new URL(site.meta.url),
+  title: site.meta.titre,
+  description: site.meta.description,
   openGraph: {
-    title: "Jean-Claude CODE — Claude Code en entreprise",
-    description:
-      "Le dirigeant de PME français qui a poussé Claude Code plus loin que 99% des devs. Praticien, pas influenceur.",
-    url: "https://jeanclaudecode.fr",
+    title: site.meta.titre,
+    description: site.meta.description,
+    url: site.meta.url,
     siteName: "Jean-Claude CODE",
     locale: "fr_FR",
     type: "website",
-    images: [
-      {
-        url: "/banner-hero.jpg",
-        width: 1500,
-        height: 500,
-        alt: "Jean-Claude CODE survolant sa ville pixelart",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jean-Claude CODE — Claude Code en entreprise",
-    description: "Le dirigeant de PME français qui a poussé Claude Code plus loin que 99% des devs.",
+    title: site.meta.titre,
+    description: site.meta.description,
     creator: "@PowerBenben",
-    images: ["/banner-hero.jpg"],
   },
 };
 
@@ -67,11 +53,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="fr"
-      className={`${pressStart.variable} ${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="fr" className={`${affiche.variable} ${texte.variable} ${machine.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

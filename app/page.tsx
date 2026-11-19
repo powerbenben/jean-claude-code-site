@@ -1,19 +1,31 @@
-import { PixelHero } from "@/components/PixelHero";
-import { RealisationsAndSide } from "@/components/RealisationsAndSide";
-import { ModuleCards } from "@/components/ModuleCards";
-import { AboutMe } from "@/components/AboutMe";
-import { CTAFinal } from "@/components/CTAFinal";
-import { PixelFooter } from "@/components/PixelFooter";
+import { Entete } from "@/components/Entete";
+import { Hero } from "@/components/Hero";
+import { Niveaux, Terrain } from "@/components/Parcours";
+import { Architecture, Choix, Securite, Maintenant } from "@/components/Plateforme";
+import { Agents, Demarche } from "@/components/Agents";
+import { Engager, Qui, Contact, Pied } from "@/components/Fin";
 
-export default function Home() {
+/* L'ordre suit la présentation du 19/11 : le constat, l'architecture, le choix, la sécurité,
+   pourquoi maintenant, les agents, la démarche ; l'offre et le contact en dernier. */
+export default function Accueil() {
   return (
     <>
-      <PixelHero />
-      <RealisationsAndSide />
-      <ModuleCards />
-      <AboutMe />
-      <CTAFinal />
-      <PixelFooter />
+      <Entete />
+      <main>
+        <Hero />
+        <Niveaux />
+        <Terrain />
+        <Architecture />
+        <Choix />
+        <Securite />
+        <Maintenant />
+        <Agents />
+        <Demarche />
+        <Engager />
+        <Qui />
+        <Contact />
+      </main>
+      <Pied />
     </>
   );
 }
