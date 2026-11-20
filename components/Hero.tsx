@@ -1,13 +1,26 @@
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import { site } from "@/content/site";
 import { t } from "@/lib/typo";
 import { Etiquette } from "@/components/ui";
 import volCollectif from "@/images/jc-vol-collectif.jpg";
+import volCollectifMobile from "@/images/jc-vol-collectif-mobile.jpg";
 
 /* Couverture : Jean-Claude et quatre collègues devenus super-héros volent au-dessus de Lille,
-   la « performance collective » du titre. Le titre tient dans le ciel, à gauche ; les toits restent dégagés. */
+   la « performance collective » du titre. Sur ordinateur, le titre tient dans le ciel, à gauche.
+   Sur téléphone, une recomposition carrée (marque/scripts/recompose.py) : Jean-Claude en grand,
+   ses collègues plus petits derrière lui. Le navigateur ne télécharge que l'image de son écran. */
 export function Hero() {
   const h = site.hero;
+  const commun = { alt: h.image, fill: true, sizes: "100vw" } as const;
+  const {
+    props: { srcSet: srcOrdinateur },
+  } = getImageProps({ ...commun, src: volCollectif });
+  const { props: mobile } = getImageProps({
+    ...commun,
+    src: volCollectifMobile,
+    loading: "eager",
+    fetchPriority: "high",
+  });
   return (
     <section className="hero" id="haut" aria-labelledby="titre-hero">
       <div className="hero-contenu">
@@ -30,15 +43,11 @@ export function Hero() {
         </div>
       </div>
       <div className="hero-image">
-        <Image
-          src={volCollectif}
-          alt={h.image}
-          fill
-          preload
-          sizes="100vw"
-          placeholder="blur"
-          className="hero-img"
-        />
+        <picture>
+          <source media="(min-width: 900px)" srcSet={srcOrdinateur} sizes="100vw" />
+          {/* eslint-disable-next-line jsx-a11y/alt-text -- props de getImageProps, alt compris */}
+          <img {...mobile} className="hero-img" />
+        </picture>
       </div>
     </section>
   );

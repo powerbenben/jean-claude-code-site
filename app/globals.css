@@ -309,8 +309,8 @@ a {
   font-size: 26px;
   line-height: 1.1;
 }
-/* Mobile : les personnages d'abord, recadrés sur la moitié droite de l'image (les cinq héros et le
-   beffroi) ; la hauteur est bornée pour qu'une tablette en portrait ne voie pas qu'un carré géant. */
+/* Mobile : les personnages d'abord, dans l'image carrée recomposée (Jean-Claude en grand) ; la hauteur
+   est bornée pour qu'une tablette en portrait ne voie pas qu'un carré géant. */
 .hero-image {
   position: relative;
   order: -1;
@@ -318,7 +318,7 @@ a {
 }
 .hero-img {
   object-fit: cover;
-  object-position: 100% 50%;
+  object-position: 50% 30%;
 }
 @media (min-width: 900px) {
   /* L'image passe en fond, à bord perdu ; le titre tient dans le ciel, à gauche des personnages. */
