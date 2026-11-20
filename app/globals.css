@@ -322,12 +322,17 @@ a {
   object-fit: cover;
   object-position: 50% 0;
 }
-/* Le poing sort de la case : il passe par-dessus la barre du haut (z-index 20). */
+/* Le poing sort de la case : il passe par-dessus la barre du haut (z-index 20). Il doit avoir
+   exactement la largeur et la position de l'image affichée. Une barre de défilement rend le cadre
+   plus étroit que haut (100vw la compte, pas 100 %) : l'image carrée, en cover, prend alors la
+   hauteur du cadre et déborde à gauche et à droite, centrée. D'où cette largeur et ce centrage. */
 .hero-poing {
   position: absolute;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 100%;
-  width: 100%;
+  width: max(100%, min(100vw, 75svh));
+  max-width: none;
   height: auto;
   z-index: 21;
   pointer-events: none;

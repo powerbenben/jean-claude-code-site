@@ -50,7 +50,8 @@ export function Hero() {
           {/* eslint-disable-next-line jsx-a11y/alt-text -- props de getImageProps, alt compris */}
           <img {...mobile} className="hero-img" />
         </picture>
-        <Image src={poingMobile} alt="" sizes="100vw" loading="eager" className="hero-poing" />
+        {/* servi tel quel (1024 x 27 px) : un redimensionnement arrondirait sa hauteur et décalerait le poing */}
+        <Image src={poingMobile} alt="" unoptimized loading="eager" className="hero-poing" />
       </div>
     </section>
   );
