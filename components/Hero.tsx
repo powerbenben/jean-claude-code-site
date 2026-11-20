@@ -2,6 +2,7 @@ import Image, { getImageProps } from "next/image";
 import { site } from "@/content/site";
 import { t } from "@/lib/typo";
 import { Etiquette } from "@/components/ui";
+import { CouvertureAnimee } from "@/components/CouvertureAnimee";
 import volCollectif from "@/images/jc-vol-collectif.jpg";
 import volCollectifMobile from "@/images/jc-vol-collectif-mobile.jpg";
 import poingMobile from "@/images/jc-vol-collectif-mobile-poing.png";
@@ -52,6 +53,8 @@ export function Hero() {
         </picture>
         {/* servi tel quel (1024 x 27 px) : un redimensionnement arrondirait sa hauteur et décalerait le poing */}
         <Image src={poingMobile} alt="" unoptimized loading="eager" className="hero-poing" />
+        {/* sur ordinateur, les capes et les cheveux bougent ; l'image fixe reste dessous */}
+        <CouvertureAnimee />
       </div>
     </section>
   );
