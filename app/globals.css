@@ -309,8 +309,10 @@ a {
   font-size: 26px;
   line-height: 1.1;
 }
-/* Mobile : les personnages d'abord, dans l'image carrée recomposée (Jean-Claude en grand) ; la hauteur
-   est bornée pour qu'une tablette en portrait ne voie pas qu'un carré géant. */
+/* Mobile : les personnages d'abord, dans l'image carrée recomposée ; la hauteur est bornée pour
+   qu'une tablette en portrait ne voie pas qu'un carré géant. L'image reste calée en haut (le cadre
+   n'est jamais plus étroit que haut, elle garde donc toute sa largeur) : le calque du poing,
+   posé juste au-dessus et à la même échelle, tombe pile sur la main de Jean-Claude. */
 .hero-image {
   position: relative;
   order: -1;
@@ -318,7 +320,17 @@ a {
 }
 .hero-img {
   object-fit: cover;
-  object-position: 50% 30%;
+  object-position: 50% 0;
+}
+/* Le poing sort de la case : il passe par-dessus la barre du haut (z-index 20). */
+.hero-poing {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  width: 100%;
+  height: auto;
+  z-index: 21;
+  pointer-events: none;
 }
 @media (min-width: 900px) {
   /* L'image passe en fond, à bord perdu ; le titre tient dans le ciel, à gauche des personnages. */
@@ -335,6 +347,9 @@ a {
   }
   .hero-img {
     object-position: 50% 40%;
+  }
+  .hero-poing {
+    display: none;
   }
   .hero-contenu {
     flex: 1;
